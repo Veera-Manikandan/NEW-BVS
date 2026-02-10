@@ -8,7 +8,12 @@ const sqlite3=require("sqlite3");
 app.use(express.urlencoded({ extended: true }));
 const bcrypt=require("bcrypt");
 const jwt=require("jsonwebtoken");
-
+const cors = require("cors");
+app.use(cors({
+  origin: "https://gym-manage-vs.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 const PORT = process.env.PORT || 3000;
